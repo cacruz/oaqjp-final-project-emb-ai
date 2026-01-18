@@ -11,15 +11,13 @@ def sent_analyzer():
 
     label = response.get('dominant_emotion')
 
+    # Error handling: dominant_emotion is None
     if label is None:
-        return "Invalid input! Try again."
+        return "Invalid text! Please try again!"
 
-    score = response[label]
+    score = response.get(label)
 
-    return (
-        f"The given text has been identified as {label} "
-        f"with a score of {score}."
-    )
+    return f"The given text has been identified as {label} with a score of {score}."
 
 @app.route("/")
 def render_index_page():
